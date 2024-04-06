@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MyApp</title>
+</head>
+
+
+<!--- let me add some small css Styling-->
+<style>
+
+/* let me style the Box */
+#MyBox{
+    background:red;
+    width:100px;
+    height:100px;
+    position:relative;
+    top:0px;
+    left:0px;
+    z-index:1;
+}
+
+/*  let me style the Button */
+#Animate_Button{
+    position:absolute;
+    z-index:4;
+	left:50%;
+	top:50%;
+}
+</style>
+
+<!--let me add the button and the div container -->
+<body>
+<!--Creating The Box  that we have been asked  to create ---->
+<div id="MyBox" class="mybox">
+I will change my color and position each time 
+you click the button.
+</div>
+
+
+<!--creating the  button that will Trigger the Animation 
+to take Place ----->
+
+<button id="Animate_Button" onclick="movebox()" >Animate Me</button>
+
+
+
+<!-- let me add the Javacsript  code that will  trigger The Animation -->
+
+<script>
+function movebox(){
+    var box=document.getElementById("MyBox");
+    var screenWidth=window.innerWidth;
+    var screenHeight=window.innerHeight;
+    
+    var my_Random_corner = Math.floor(Math.random() * 4); // Randomly select one of the four corners
+    
+    var left, top;
+    
+    // let me  find the coordinates for each of the corners. 
+    switch(my_Random_corner) {
+        case 0: // This is the Top left  Corner 
+            left = 0;
+            top = 0;
+            break;
+        case 1: // This  is the Top Right Corner 
+            left = screenWidth - 100;
+            top = 0;
+            break;
+        case 2: // This is the Bottom right Corner 
+            left = screenWidth - 100;
+            top = screenHeight - 100;
+            break;
+        case 3: // this Here  is the Bottom Left Corner. 
+            left = 0;
+            top = screenHeight - 100;
+            break;
+    }
+    
+    // Set box position
+    box.style.left = left + 'px';
+    box.style.top = top + 'px';
+    
+    
+    // Set random background color
+	//geneting a random Number. 
+    var myrandomNumber=Math.random()*16000000;
+	var trancated_random_number=Math.floor(myrandomNumber);
+	
+    var background_color='#'+trancated_random_number.toString(16);
+    box.style.backgroundColor=background_color;
+}
+</script>
+
+</body>
+</html>
